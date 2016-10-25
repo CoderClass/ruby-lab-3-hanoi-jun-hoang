@@ -9,7 +9,7 @@ RSpec.feature "SortProducts", type: :feature do
   scenario "visit clicks on Sort by Alphabetical" do
     product1 = FactoryGirl.create(:product, name: "Brad's Hat")
     # TODO: create another product with "Adam's Hat" name
-
+    product2 = FactoryGirl.create(:product, name: "Adam's Hat")
     visit root_path
 
     # verify the products are displayed in the order they were created:
@@ -22,7 +22,7 @@ RSpec.feature "SortProducts", type: :feature do
     expect(current_url).to eq root_url(sort: "alphabetical") # TODO: make sure your link submits to the correct URL
 
     # test that hat names are in the right order now
-    expect(hat_links).to eq # ... TODO: fill it out
+    expect(hat_links).to eq ["Adam's Hat", "Brad's Hat"]
   end
 
 end
